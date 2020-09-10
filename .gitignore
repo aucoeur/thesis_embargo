@@ -4,6 +4,7 @@
 
 ### dotenv ###
 .env
+credentials.json
 
 ### Go ###
 # Binaries for programs and plugins
