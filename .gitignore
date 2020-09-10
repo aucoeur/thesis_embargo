@@ -5,6 +5,9 @@
 ### dotenv ###
 .env
 
+### credentials ###
+credentials.json
+sacredentials.json
 ### Go ###
 # Binaries for programs and plugins
 *.exe
@@ -217,10 +220,10 @@ pip-selfcheck.json
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
 *.code-workspace
 
 ### VisualStudioCode Patch ###
