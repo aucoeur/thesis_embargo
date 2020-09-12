@@ -1,5 +1,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from datetime import datetime
 import pprint
 
 if __name__ == "__main__":
@@ -22,6 +23,9 @@ if __name__ == "__main__":
     sheet = client.open('Test API Integration').sheet1
 
     sheet_data = sheet.get_all_records()
-    pp = pprint.PrettyPrinter()
-    pp.pprint(sheet_data)
+    # pp = pprint.PrettyPrinter()
+    # pp.pprint(len(sheet_data))
+
+    next_row = len(sheet_data) + 2
+    sheet.update(f'A{next_row}', [['Student test', datetime.now()], ["Student test 2"]])
 
