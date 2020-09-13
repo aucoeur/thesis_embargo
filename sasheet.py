@@ -27,5 +27,5 @@ if __name__ == "__main__":
     # pp.pprint(len(sheet_data))
 
     next_row = len(sheet_data) + 2
-    sheet.update(f'A{next_row}', [['Student test', datetime.now()], ["Student test 2"]])
+    sheet.update(f'A{next_row}', [['Student new test', str(datetime.now()), 'MOOP']])
 
