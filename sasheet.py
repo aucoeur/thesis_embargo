@@ -1,6 +1,7 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pprint
+from datetime import datetime
 
 if __name__ == "__main__":
     # Set Scopes for API
@@ -22,6 +23,18 @@ if __name__ == "__main__":
     sheet = client.open('Test API Integration').sheet1
 
     sheet_data = sheet.get_all_records()
-    pp = pprint.PrettyPrinter()
-    pp.pprint(sheet_data)
+    # pp = pprint.PrettyPrinter()
+    # pp.pprint(sheet_data)
+
+    now = datetime.now()
+
+    # UPDATE
+    # [student, date requested, department, final decision, comment]
+    # choose next open row
+    next_row = len(sheet_data) + 2
+    # add info to that row
+    sheet.update(f'A{next_row}', [(input("student: "), str(now.strftime("%d/%m/%Y %H:%M:%S")), input("department: "), input("final decision: "), input("comment: "))])
+
+    # # DELETE
+    # sheet.delete_row()
 
