@@ -1,0 +1,20 @@
+$color-neutral: rgb(255, 249, 240);
+$color-accent: rgb(117, 0, 128);
+$color-accent-bright: rgb(185, 0, 185);
+$color-light: white;
+$color-dark: black;
+$font-size: 20px;
+$font-family: 'Signika';
+$gap: 1rem;
+$border: 2px;
+
+.App {
+  width: calc(100% -30px);
+  padding: $gap;
+  background-color: $color-neutral;
+  height: 100vh;
+  color: $color-dark;
+  font-size: $font-size;
+  font-weight: 300;
+  font-family: $font-family, sans-serif;
+}

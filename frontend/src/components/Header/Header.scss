@@ -1,0 +1,19 @@
+@import '../../App.scss';
+
+h1 {
+    font-weight: 500;
+    font-size: $font-size * 1.5;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0 $gap * 2;
+  color: $color-accent;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-link-active {
+  color: $color-accent-bright;
+  border-bottom: $border solid;
+}

@@ -1,0 +1,22 @@
+@import '../../App.scss';
+
+$size: 30%;
+
+
+textarea {
+    width: $size;
+}
+
+input[type=button] {
+    padding: $gap;
+    font-size: $font-size;
+    color: $color-light;
+    background-color: $color-accent;
+    border: $border solid $color-accent;
+    border-radius: 1rem;
+
+    &:hover {
+        background-color: $color-accent-bright;
+        border: $border solid $color-accent-bright;
+    }
+}
