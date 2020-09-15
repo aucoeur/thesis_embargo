@@ -28,46 +28,46 @@ class Parser(object):
                     while ':' not in line:
                         bigline = bigline + line
                         line = next(lines)
-                    obj['embargo_reason'] = get_value('Reason for Requesting Embargo:', bigline, '')
+                    info['embargo_reason'] = get_value('Reason for Requesting Embargo:', bigline, '')
                 if line.startswith('Reason for Requesting Embargo:'):
                     bigline = line
                     line = next(lines)
                     while ':' not in line:
                         bigline = bigline + line
                         line = next(lines)
-                    obj['embargo_reason'] = get_value('Reason for Requesting Embargo:', bigline, '')
+                    info['embargo_reason'] = get_value('Reason for Requesting Embargo:', bigline, '')
                 if line.startswith('Reason for Requesting Exception:'):
                     bigline = line
                     line = next(lines)
                     while ':' not in line[0:20]:
                         bigline = bigline + line
                         line = next(lines)
-                    obj['embargo_reason'] = get_value('Reason for Requesting Exception:', bigline, '')
+                    info['embargo_reason'] = get_value('Reason for Requesting Exception:', bigline, '')
                 if line.startswith('<p>Reason for Requesting Exception:'):
                     bigline = line
                     line = next(lines)
                     while ':' not in line:
                         bigline = bigline + line
                         line = next(lines)
-                    obj['embargo_reason'] = get_value('Reason for Requesting Exception:', bigline, '')
+                    info['embargo_reason'] = get_value('Reason for Requesting Exception:', bigline, '')
                 if line.startswith('Requestor Name: '):
-                    obj['requestor_name'] = get_value('Requestor Name: ', line, '')
+                    info['requestor_name'] = get_value('Requestor Name: ', line, '')
                 if line.startswith('Requestor Email: '):
-                    obj['requestor_email'] = get_value('Requestor Email: ', line, '')
+                    info['requestor_email'] = get_value('Requestor Email: ', line, '')
                 if line.startswith('Thesis Author: '):
-                    obj['thesis_author'] = get_value('Thesis Author: ', line, '')
+                    info['thesis_author'] = get_value('Thesis Author: ', line, '')
                 if line.startswith('Thesis Title: '):
-                    obj['thesis_title'] = get_value('Thesis Title: ', line, '')
+                    info['thesis_title'] = get_value('Thesis Title: ', line, '')
                 if line.startswith('Graduation Year: '):
-                    obj['grad_year'] = get_value('Graduation Year: ', line, None)
+                    info['grad_year'] = get_value('Graduation Year: ', line, None)
                 if line.startswith('Advisor Name: '):
-                    obj['advisor_name'] = get_value('Advisor Name: ', line, '')
+                    info['advisor_name'] = get_value('Advisor Name: ', line, '')
                 if line.startswith('Advisor Email: '):
-                    obj['advisor_email'] = get_value('Advisor Email: ', line, '')
+                    info['advisor_email'] = get_value('Advisor Email: ', line, '')
                 if line.startswith('Division: '):
-                    obj['division'] = get_value('Division: ', line, '')
+                    info['division'] = get_value('Division: ', line, '')
                 if line.startswith('Request: '):
-                    obj['request'] = get_value('Request: ', line, '')
+                    info['request'] = get_value('Request: ', line, '')
 
 
 
