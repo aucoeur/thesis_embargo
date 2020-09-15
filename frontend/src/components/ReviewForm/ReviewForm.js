@@ -6,7 +6,7 @@ function ReviewForm(props) {
     if (!props.data) {   
         return (
             <div>
-                Merp
+                Updated props should show here when 'toggled' instead of using as link
             </div>
         )
     } else {
