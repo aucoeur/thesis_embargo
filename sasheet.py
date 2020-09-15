@@ -1,7 +1,75 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pprint
-from datetime import datetime
+
+class Parser(object):
+    def __init(fileName):
+        info = {
+            'embargo_reason': '',
+            'requestor_name': '',
+            'requestor_email': '',
+            'thesis_author': '',
+            'thesis_title': '',
+            'grad_year': '',
+            'advisor_name': '',
+            'advisor_email': '',
+            'division': '',
+            'request': ''
+        }
+
+    def parse(name):
+        start = False
+        with open(f'{source_text}.txt', 'r') as text:
+            for line in text:
+                line.strip()
+                if line.startswith('Reason for Requesting Embargo:'):
+                    bigline = line
+                    line = next(lines)
+                    while ':' not in line:
+                        bigline = bigline + line
+                        line = next(lines)
+                    obj['embargo_reason'] = get_value('Reason for Requesting Embargo:', bigline, '')
+                if line.startswith('Reason for Requesting Embargo:'):
+                    bigline = line
+                    line = next(lines)
+                    while ':' not in line:
+                        bigline = bigline + line
+                        line = next(lines)
+                    obj['embargo_reason'] = get_value('Reason for Requesting Embargo:', bigline, '')
+                if line.startswith('Reason for Requesting Exception:'):
+                    bigline = line
+                    line = next(lines)
+                    while ':' not in line[0:20]:
+                        bigline = bigline + line
+                        line = next(lines)
+                    obj['embargo_reason'] = get_value('Reason for Requesting Exception:', bigline, '')
+                if line.startswith('<p>Reason for Requesting Exception:'):
+                    bigline = line
+                    line = next(lines)
+                    while ':' not in line:
+                        bigline = bigline + line
+                        line = next(lines)
+                    obj['embargo_reason'] = get_value('Reason for Requesting Exception:', bigline, '')
+                if line.startswith('Requestor Name: '):
+                    obj['requestor_name'] = get_value('Requestor Name: ', line, '')
+                if line.startswith('Requestor Email: '):
+                    obj['requestor_email'] = get_value('Requestor Email: ', line, '')
+                if line.startswith('Thesis Author: '):
+                    obj['thesis_author'] = get_value('Thesis Author: ', line, '')
+                if line.startswith('Thesis Title: '):
+                    obj['thesis_title'] = get_value('Thesis Title: ', line, '')
+                if line.startswith('Graduation Year: '):
+                    obj['grad_year'] = get_value('Graduation Year: ', line, None)
+                if line.startswith('Advisor Name: '):
+                    obj['advisor_name'] = get_value('Advisor Name: ', line, '')
+                if line.startswith('Advisor Email: '):
+                    obj['advisor_email'] = get_value('Advisor Email: ', line, '')
+                if line.startswith('Division: '):
+                    obj['division'] = get_value('Division: ', line, '')
+                if line.startswith('Request: '):
+                    obj['request'] = get_value('Request: ', line, '')
+
+
 
 if __name__ == "__main__":
     # Set Scopes for API
@@ -23,18 +91,12 @@ if __name__ == "__main__":
     sheet = client.open('Test API Integration').sheet1
 
     sheet_data = sheet.get_all_records()
-    # pp = pprint.PrettyPrinter()
-    # pp.pprint(sheet_data)
+    pp = pprint.PrettyPrinter()
+    pp.pprint(sheet_data)
 
-    now = datetime.now()
 
-    # UPDATE
-    # [student, date requested, department, final decision, comment]
-    # choose next open row
-    next_row = len(sheet_data) + 2
-    # add info to that row
-    sheet.update(f'A{next_row}', [(input("student: "), str(now.strftime("%d/%m/%Y %H:%M:%S")), input("department: "), input("final decision: "), input("comment: "))])
+    sheet.update()
 
-    # # DELETE
-    # sheet.delete_row()
 
+
+    
