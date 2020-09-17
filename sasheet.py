@@ -24,17 +24,16 @@ class Parser(object):
     def removeTitle(self, line, currField):
         for i in range(len(line)):
             if line[i] == ':':
-                self.fields[currField] += line[i+1:len(line)]
+                self.fields[currField] += line[i+2:len(line)]
         return "FAILED TO REMOVE TITLE"
 
     def parse(self, source):
         currField = ''      #keep track of which field we're adding to
         start = False       #keep track of if we've started to run into the info we want now
         #opens text file
-        with open(f'{source}.txt', 'r') as text:
+        with open(f'sample_submissions/{source}.txt', 'r') as text:
             #loops through every line in the text file
             for line in text:
-                line = line.strip()        #strips /n marks
                 line = line.strip()        #strips trailing and beginnign white spaces
                 #for Emargo Reason info
                 if line.startswith('Reason for Requesting Exception:'):
