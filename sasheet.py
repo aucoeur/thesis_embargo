@@ -3,7 +3,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pprint
 
 class Parser(object):
-    def __init__(self, fileName): 
+    def __init__(self, source): 
         self.fields = {               #dictionary for info parsed from  text file
             'embargo_reason': '',
             'requestor_name': '',
@@ -12,11 +12,13 @@ class Parser(object):
             'thesis_title': '',
             'grad_year': '',
             'advisor_name': '',
-            'advisor_email': '',
-            'division': '',
+            'advisor_email':'',
+            'division':'',
+            'type': '',
             'request': '',
             'patent': False
         }
+        self.parse(source)
 
     #removes the field's name from the line and then adds the info to the appropriate field in the dic
     def removeTitle(self, line, currField):
@@ -32,9 +34,10 @@ class Parser(object):
         with open(f'{source}.txt', 'r') as text:
             #loops through every line in the text file
             for line in text:
-                line.strip()        #strips trailing and leading whitespace from the line
+                line = line.strip()        #strips /n marks
+                line = line.strip()        #strips trailing and beginnign white spaces
                 #for Emargo Reason info
-                if line.startswith('Reason for Requesting Embargo:'):
+                if line.startswith('Reason for Requesting Exception:'):
                     start =  True       #the first field we fill in should be the embargo reason
                     currField = 'embargo_reason'
                     self.removeTitle(line, currField)
@@ -70,6 +73,10 @@ class Parser(object):
                     elif line.startswith('Division: '):
                         currField = 'division'
                         self.removeTitle(line, currField)
+                    #for Exception Type info
+                    elif line.startswith('Exception Type: '):
+                        currField = 'type'
+                        self.removeTitle(line, currField)
                     #for Request info
                     elif line.startswith('Request: '):
                         currField = 'request'
@@ -79,6 +86,8 @@ class Parser(object):
                     # ONLY if we've started encountering the 
                     else:         
                         self.fields[currField] += line
+                        if "Patents pending:" in line:
+                            self.fields['patent'] = True
 
     #converts the field's dic to JSON
     def to_Json(self):
@@ -114,7 +123,7 @@ if __name__ == "__main__":
     # sheet.update()
 
 
-    parsed =  Parser("sample1")
+    parsed = Parser("sample1")
     print(parsed.fields)
 
 
