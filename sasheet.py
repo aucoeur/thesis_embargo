@@ -93,9 +93,6 @@ class Parser(object):
     def to_Json(self):
         return json.dumps(self.fields)
 
-
-
-
 if __name__ == "__main__":
     # # Set Scopes for API
     # scope = [
@@ -125,8 +122,3 @@ if __name__ == "__main__":
 
     parsed = Parser("sample1")
     print(parsed.to_Json())
-    
-
-
-
-    
