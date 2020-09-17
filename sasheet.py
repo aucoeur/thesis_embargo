@@ -1,6 +1,7 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pprint
+import json
 
 class Parser(object):
     def __init__(self, source): 
@@ -90,7 +91,7 @@ class Parser(object):
 
     #converts the field's dic to JSON
     def to_Json(self):
-        pass
+        return json.dumps(self.fields)
 
 
 
@@ -123,7 +124,8 @@ if __name__ == "__main__":
 
 
     parsed = Parser("sample1")
-    print(parsed.fields)
+    print(parsed.to_Json())
+    
 
 
 
