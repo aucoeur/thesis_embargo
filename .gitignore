@@ -1,3 +1,5 @@
+#Sample submissions
+sample_submissions/
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,venv,dotenv,go,python,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,venv,dotenv,go,python,react
@@ -233,3 +235,4 @@ pip-selfcheck.json
 .history
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,venv,dotenv,go,python,react
+
