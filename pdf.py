@@ -3,7 +3,7 @@
 # PURPOSE IS TO SEE WHAT CAN BE USED
 
 # from https://www.geeksforgeeks.org/convert-text-and-text-file-to-pdf-using-python/
-from fpdf import FPDF 
+from fpdf import FPDF
   
 # save FPDF() class into a  
 # variable pdf 
@@ -17,11 +17,11 @@ pdf.add_page()
 pdf.set_font("Arial", size = 15) 
   
 # create a cell 
-pdf.cell(200, 10, txt = "GeeksforGeeks",  
+pdf.cell(200, 10, txt = "This is a Test for Team Porculion",  
          ln = 1, align = 'C') 
   
 # add another cell 
-pdf.cell(200, 10, txt = "A Computer Science portal for geeks.", 
+pdf.cell(200, 10, txt = "This code works and can be used.", 
          ln = 2, align = 'C') 
   
 # save the pdf with name .pdf 

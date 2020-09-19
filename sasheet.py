@@ -2,6 +2,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pprint
 import json
+from fpdf import FPDF
 
 class Parser(object):
     def __init__(self, source): 
@@ -92,6 +93,25 @@ class Parser(object):
     #converts the field's dic to JSON
     def to_Json(self):
         return json.dumps(self.fields)
+    
+    def to_PDF(self):
+        pdf = FPDF() 
+  
+        # Add a page 
+        pdf.add_page() 
+
+        data = json.dumps(self.fields)
+  
+        # set style and size of font  
+        # that you want in the pdf 
+        pdf.set_font("Arial", size = 6) 
+        
+        # create a cell 
+        pdf.cell(200, 10, txt = data,  
+                ln = 1, align = 'C') 
+        
+        # save the pdf with name .pdf 
+        pdf.output("GFG.pdf")
 
 if __name__ == "__main__":
     # # Set Scopes for API
@@ -122,3 +142,4 @@ if __name__ == "__main__":
 
     parsed = Parser("sample1")
     print(parsed.to_Json())
+    parsed.to_PDF()
