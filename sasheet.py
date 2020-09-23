@@ -102,9 +102,14 @@ class Parser(object):
                         if "Patents pending:" in line:
                             self.fields[12][1] = True
 
+
     #converts the field's dic to JSON
     def to_Json(self):
-        return json.dumps(self.fields)
+        dic = {}
+        for item in self.fields:
+            dic[item[0]] = item[1]
+        
+        return json.dumps(dic)
 
 
 
@@ -128,9 +133,6 @@ if __name__ == "__main__":
     
     row = 2
     col = 1
-
-    print(sheet.cell(row, col).value)
-
     for item in parsed.fields:
         if sheet.cell(row, col).value == '':
             sheet.update_cell(row, col, item[1])
