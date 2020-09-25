@@ -1,3 +1,11 @@
+@import 'global.scss';
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: $color-neutral;
+}
+
 body {
   margin: 0;
   font-family: 'Signika', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
