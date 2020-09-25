@@ -15,10 +15,6 @@ function Header() {
                         activeClassName="nav-link-active" 
                         exact 
                         to="/">Form Builder</NavLink>  
-                    <NavLink 
-                        className="nav-link"   
-                        activeClassName="nav-link-active" 
-                        to="/review">Review Form</NavLink>
                     </div>
             </header>
         </div>
