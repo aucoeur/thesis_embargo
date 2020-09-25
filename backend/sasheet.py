@@ -141,9 +141,6 @@ if __name__ == "__main__":
         else:
             row+=1
 
-
-
-
     # # get sheets
     # sheet = client.open('Test API Integration').sheet4
     # sheet_data = sheet.get_all_records()
@@ -154,24 +151,11 @@ if __name__ == "__main__":
     # print(parsed.to_Json())
 
     
-
-
-
-
-
-
-
-    
-
-
-<<<<<<< HEAD:backend/sasheet.py
     sheet_data = sheet.get_all_records()
     # pp = pprint.PrettyPrinter()
     # pp.pprint(len(sheet_data))
 
     next_row = len(sheet_data) + 2
     sheet.update(f'A{next_row}', [['Student new test', str(datetime.now()), 'MOOP']])
-=======
->>>>>>> 414031bca66cf1632882b6ff3a4288398b287eb7:sasheet.py
 
     
