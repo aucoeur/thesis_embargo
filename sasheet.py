@@ -54,7 +54,7 @@ class Parser(object):
                     start =  True       #the first field we fill in should be the embargo reason
                     currField = 1
                     self.removeTitle(line, currField)
-                if start == True:
+                elif start == True:
                     #for Requestor Name's info
                     if line.startswith('Requestor Name: '):
                         currField = 2
@@ -129,6 +129,7 @@ if __name__ == "__main__":
     sheet = spread.worksheet("ParsedData")                                      #select the ParsedData  sheet
 
     parsed = Parser("sample1")      #parses data from txt file
+    print(parsed.fields)
 
     
     row = 2
