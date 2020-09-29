@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import '../../global.scss';
 
 $size: 50%;
 
@@ -23,4 +23,13 @@ input[type=button] {
 
 .header {
     font-weight: 400;
+}
+
+div {
+    padding: $padding;
+}
+
+.parsed {
+    display: flex;
+    flex-direction: row;
 }

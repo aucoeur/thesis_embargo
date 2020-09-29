@@ -19,24 +19,26 @@ function GenerateForm() {
         const headers = ["Reason for Requesting Exception: ", "Requestor Name: ", "Requestor Email: ", "Thesis Author: ", "Thesis Title: ", "Graduation Year: ", "Advisor Name: ", "Advisor Email: ", "Division: ", "Exception Type: ", "Request: " ]
         
         let replacedText = newData;
-
+        
+        // wraps headers in div and span
         for (let i =0; i < headers.length; i++) {            
             replacedText = strReplace(replacedText, headers[i], () => (
-                <div key={i+'head'}><span className="header">{headers[i]}</span></div>
+                <span className="header">{headers[i]}</span>
                 )
             );
+        // wraps remaining text in a span
         }
         replacedText = strReplace(replacedText, /(.*)/g, (match, i) => (
-            <span key={match+i+Math.random()} className="entry">{match}</span>
+            <span key={Math.random()+match} className="entry">{match}<br /></span>
             )
         );
-        // console.log(typeof(replacedText), replacedText)
+        console.log(replacedText)
 
         return replacedText;
     }
 
     return (
-        <div>
+        <div className="container">
             <div>
                 <textarea 
                     rows="10"
@@ -50,9 +52,11 @@ function GenerateForm() {
                     value="Generate"
                     onClick={ () => setProcessedData(transformData(data)) } />
             </div>
-            <div>
+            <div className="container">
                 <h1>Parsed Form Data</h1>
-                <ReviewForm data={ processedData ? processedData : null } />
+                <div className="parsed">
+                    <ReviewForm data={ processedData ? processedData : null } />
+                </div>
             </div>
         </div>
     )

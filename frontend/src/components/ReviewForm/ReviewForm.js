@@ -6,7 +6,7 @@ function ReviewForm(props) {
     if (!props.data) {   
         return (
             <div>
-                Updated props should show here when 'toggled' instead of using as link
+                Parsed data will go here
             </div>
         )
     } else {
