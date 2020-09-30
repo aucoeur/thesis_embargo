@@ -10,9 +10,16 @@ class Parser(object):
     #constructor: takes in file name to parse through it    
     def __init__(self, source): 
         self.fields = [              #dictionary for info parsed from  text file
+            ['advisor'],
+            ['submitted': 'y/n'],
+            ['request type'],
+            ['link_to_thesis'],
+            ['division'],
+            ['graduation_date': 'dd/mm/yyyy'],
+
             ['signature'],
             ['date_of_decision': 'dd/mm/yyyy'],
-            ['submitted': 'y/n'],
+            ['approval_status': 'y/n'],
             ['name'],
             ['comment']
         ]
