@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import reactStringReplace from "react-string-replace";
+import ParsedForm from '../ParsedForm/ParsedForm';
 import ReviewForm from '../ReviewForm/ReviewForm';
+
 import './GenerateForm.scss';
 
 const strReplace = reactStringReplace;
@@ -39,12 +41,17 @@ function GenerateForm() {
 
     return (
         <div className="container">
-            <div>
+            <div className="row">
                 <textarea 
                     rows="10"
                     value={data}
                     onChange= {(e) => setData(e.target.value)}
                     />
+                    <div className="col">
+                    <span><input type="checkbox" name="Person 1"/> Person 1</span>
+                    <span><input type="checkbox" name="Person 2"/> Person 2</span>
+                    </div>
+
             </div>
             <div>
                 <input 
@@ -55,8 +62,9 @@ function GenerateForm() {
             <div className="container">
                 <h1>Parsed Form Data</h1>
                 <div className="parsed">
-                    <ReviewForm data={ processedData ? processedData : null } />
+                    <ParsedForm data={ processedData ? processedData : null } />
                 </div>
+                { processedData ? <ReviewForm /> : null }
             </div>
         </div>
     )
