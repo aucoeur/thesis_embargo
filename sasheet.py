@@ -182,8 +182,84 @@ def parsed():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
+    #app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
     
+    data =  {
+        "text": ''' Google Groups
+                    Doctoral Thesis Embargo Exception Request for Jocelyn Yamasaki Caltech Library via Caltech Library
+                    Posted in group: Thesis Embargo
+                    Submitted on Friday, August 28, 2020 - 4:29 PM Dear Jocelyn Yamasaki,
+                    Aug 28, 2020 4:30 PM
+                    Pursuant to the Doctoral Thesis Dissemination Policy adopted by the California Institute of Technology on March 1, 2017 (available at http://libguides.caltech.edu/theses/dissemination-policy), this communication serves to notify you that your request for your thesis, “SAMPLE - Modeling and Development of Superconducting Nanowire Single-Photon Detectors,” to extend the embargo for an additional 6 months has been forwarded for review by the University Librarian, Division Chair, Vice Provost, and Dean of Graduate Studies.
+                    Please be aware that even in the event the exception is approved, the metadata (title, abstract) will be made available worldwide upon approval.
+                    The requested exception to the policy requires the consent of the University Librarian, the Division Chair, the Vice-Provost and the Dean of Graduate Studies. For further details on what type of exceptions might be granted, please see the full Doctoral Thesis Dissemination Policy at the URL above.
+                    If you have any questions about the dissemination policy, or depositing in the CaltechTHESIS repository, please visit http://libguides.caltech.edu/theses or email thesis@library.caltech.edu.
+                    Sincerely,
+                    Kara Whatley
+                    Caltech University Librarian
+                    — On behalf of the Provost’s Office of the California Institute of Technology
+                    Submitted values are:
+                    Reason for Requesting Exception: Chapter 2 contains unpublished theory work which is intended for publication in APS Physical Review B. This also has not been drafted as a paper yet because I have been writing my thesis. This work is theory, which builds on existing numerical work performed by one of our competitors. As such, there is a high risk of getting scooped if our work is circulated before we submit.
+                    Requestor Name: Jocelyn Yamasaki
+                    Requestor Email: jocelyny@library.caltech.edu
+                    Thesis Author: Jocelyn Yamasaki
+                    Thesis Title: SAMPLE - Modeling and Development of Superconducting Nanowire Single-Photon Detectors
+                    Graduation Year: 2020
+                    Advisor Name: Keith Schwab
+                    Advisor Email: schwab@caltech.edu
+                    Division: Engineering and Applied Science (EAS)
+                    Exception Type: Extend Embargo for an Additional 6 Months
+                    Request: Consistent with the Caltech Doctoral Thesis Dissemination policy, I am requesting an exception to the 6-month embargo to campus for my PhD thesis.
+                    exception request for embargo from campus (no campus access) OR extension of previous embargo request
+                    /'''
+
+    }
+    data =  json.dumps(data)
+    data = json.loads(data)                  #converts json to dictionary
+    text = data["text"]                     #dictionary should onyl have 1 filed "text" which habe the copy pasted text
+    file = open("sample_submissions/submission.txt", "w")   #open a  new text file
+    file.write(text)                                        #write the text from the json dic to text file
+    file.close() 
+
+    sheet = Sheets()
+
+    parsing = sheet.spread.worksheet("ParsedData")                                      #select the ParsedData sheet
+    decision = sheet.spread.worksheet("Decisions")                                     #select the ParsedData sheet
+
+    parsed = Parser("submission")      #parses data from txt file
+
+    #updating the ParsedData Sheet
+    row = 2
+    col = 1
+    for item in parsed.fields:
+        if parsing.cell(row, col).value == '':
+            parsing.update_cell(row, col, item[1])
+            col += 1
+        else:
+            row+=1
+
+    #updating the Decisions Sheet
+    row = 2
+    while True:
+        if parsing.cell(row, col).value == '':
+            break
+        else:
+            row+=1
+    parsedDict = parsed.to_Dict()
+    for field in parsedDict.keys():
+        if field == "thesis_title":
+            decision.update_cell(row, 1, parsedDict[field])
+        elif field == "thesis_author":
+            decision.update_cell(row, 2, parsedDict[field])
+        elif field == "advisor_name":
+            decision.update_cell(row, 3, parsedDict[field])
+        elif field == "date_time":
+            decision.update_cell(row, 4, parsedDict[field])
+
+
+
+
+
 
     
 
