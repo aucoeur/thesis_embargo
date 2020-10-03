@@ -184,22 +184,6 @@ def parsed():
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
     
-    
-
-    
-    
-
-
-
-
-    # # get sheets
-    # sheet = client.open('Test API Integration').sheet4
-    # sheet_data = sheet.get_all_records()
-    # pp = pprint.PrettyPrinter()
-    # pp.pprint(sheet_data)
-    # sheet.update()
-    # 
-    # print(parsed.to_Json())
 
     
 
