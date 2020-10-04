@@ -25,7 +25,7 @@ function GenerateForm() {
         // wraps headers in div and span
         for (let i =0; i < headers.length; i++) {            
             replacedText = strReplace(replacedText, headers[i], () => (
-                <span className="header">{headers[i]}</span>
+                <span key={headers[i]} className="header">{headers[i]}</span>
                 )
             );
         // wraps remaining text in a span
