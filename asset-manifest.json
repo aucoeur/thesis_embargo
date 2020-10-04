@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/thesis_embargo/static/css/main.147059c0.chunk.css",
+    "main.js": "/thesis_embargo/static/js/main.84be5f56.chunk.js",
+    "main.js.map": "/thesis_embargo/static/js/main.84be5f56.chunk.js.map",
+    "runtime-main.js": "/thesis_embargo/static/js/runtime-main.6db65620.js",
+    "runtime-main.js.map": "/thesis_embargo/static/js/runtime-main.6db65620.js.map",
+    "static/js/2.727a2067.chunk.js": "/thesis_embargo/static/js/2.727a2067.chunk.js",
+    "static/js/2.727a2067.chunk.js.map": "/thesis_embargo/static/js/2.727a2067.chunk.js.map",
+    "index.html": "/thesis_embargo/index.html",
+    "precache-manifest.bcd796893727bff32515704cfe817e01.js": "/thesis_embargo/precache-manifest.bcd796893727bff32515704cfe817e01.js",
+    "service-worker.js": "/thesis_embargo/service-worker.js",
+    "static/css/main.147059c0.chunk.css.map": "/thesis_embargo/static/css/main.147059c0.chunk.css.map",
+    "static/js/2.727a2067.chunk.js.LICENSE.txt": "/thesis_embargo/static/js/2.727a2067.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6db65620.js",
+    "static/js/2.727a2067.chunk.js",
+    "static/css/main.147059c0.chunk.css",
+    "static/js/main.84be5f56.chunk.js"
+  ]
+}
