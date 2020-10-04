@@ -24,6 +24,7 @@ class Parser(object):
             ['request'],
             ['patent', False]
         ]
+        
         self.parse(source)
 
     #removes the field's name from the line and then adds the info to the appropriate field in the dic
