@@ -3,6 +3,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 import pprint
 import json
+import os
+
+
 
 class Parser(object):
     #constructor: takes in file name to parse through it    
@@ -22,6 +25,7 @@ class Parser(object):
             ['request'],
             ['patent', False]
         ]
+        
         self.parse(source)
 
     #removes the field's name from the line and then adds the info to the appropriate field in the dic
@@ -55,7 +59,7 @@ class Parser(object):
                     start =  True       #the first field we fill in should be the embargo reason
                     currField = 1
                     self.removeTitle(line, currField)
-                if start == True:
+                elif start == True:
                     #for Requestor Name's info
                     if line.startswith('Requestor Name: '):
                         currField = 2
@@ -104,58 +108,24 @@ class Parser(object):
                             self.fields[12][1] = True
 
 
-    #converts the field's dic to JSON
-    def to_Json(self):
+    #converts the fields to a dict
+    def to_Dict(self):
         dic = {}
         for item in self.fields:
             dic[item[0]] = item[1]
         
-        return json.dumps(dic)
+        return dic
 
+class Sheets(object):
+    def __init__(self):
+        # Set Scopes for API
+        self.scope = [
+            'https://www.googleapis.com/auth/drive',
+            'https://www.googleapis.com/auth/drive.file'
+            ]   
+        
+        self.file_name = 'sacredentials.json'                                            #File with service account credentials
+        self.creds = ServiceAccountCredentials.from_json_keyfile_name(self.file_name, self.scope)  #store credentials from file with access scopes
+        self.client = gspread.authorize(self.creds)                                           #authorize sheets
+        self.spread = self.client.open('Test API Integration')                                #open the google sheets
 
-
-
-if __name__ == "__main__":
-    # Set Scopes for API
-    scope = [
-        'https://www.googleapis.com/auth/drive',
-        'https://www.googleapis.com/auth/drive.file'
-        ]   
-
-    
-    file_name = 'sacredentials.json'                                            #File with service account credentials
-    creds = ServiceAccountCredentials.from_json_keyfile_name(file_name, scope)  #store credentials from file with access scopes
-    client = gspread.authorize(creds)                                           #authorize sheets
-    spread = client.open('Test API Integration')                                #open the google sheets
-    sheet = spread.worksheet("ParsedData")                                      #select the ParsedData  sheet
-
-    parsed = Parser("sample1")      #parses data from txt file
-
-    
-    row = 2
-    col = 1
-    for item in parsed.fields:
-        if sheet.cell(row, col).value == '':
-            sheet.update_cell(row, col, item[1])
-            col += 1
-        else:
-            row+=1
-
-    # # get sheets
-    # sheet = client.open('Test API Integration').sheet4
-    # sheet_data = sheet.get_all_records()
-    # pp = pprint.PrettyPrinter()
-    # pp.pprint(sheet_data)
-    # sheet.update()
-    # 
-    # print(parsed.to_Json())
-
-    
-    sheet_data = sheet.get_all_records()
-    # pp = pprint.PrettyPrinter()
-    # pp.pprint(len(sheet_data))
-
-    next_row = len(sheet_data) + 2
-    sheet.update(f'A{next_row}', [['Student new test', str(datetime.now()), 'MOOP']])
-
-    
