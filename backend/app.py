@@ -1,4 +1,5 @@
 from flask import Flask, request, url_for, redirect
+import os
 from sasheet import Parser, Sheets
 import json
 
@@ -67,21 +68,11 @@ def parsed():
         elif field == "date_time":
             decision.update_cell(row, 4, parsedDict[field])
 
-    
-        
+
+
 
 
 
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
-    
-   
-
-
-
-    
-
-
-
-    
