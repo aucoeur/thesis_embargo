@@ -17,16 +17,17 @@ pdf.add_page()
 pdf.set_font("Arial", size = 15)
 
 # create a cell
-pdf.cell(200, 10, txt = "This is a Test for Team Porculion",
-         ln = 1, align = 'C')
+# pdf.cell(200, 10, txt = "This is a Test for Team Porculion",
+#          ln = 1, align = 'C')
 
 #going to create a var that uses a text file for pdf
-
+file = open("Template_testing.text","r")
 #iterate over text file to insert into pdf
-
+for i in file:
+    
 # add another cell
-pdf.cell(200, 10, txt = "This code works and can be used.",
-         ln = 2, align = 'C')
+# pdf.cell(200, 10, txt = "This code works and can be used.",
+#          ln = 2, align = 'C')
 
 # save the pdf with name .pdf
 pdf.output("GFG.pdf")
