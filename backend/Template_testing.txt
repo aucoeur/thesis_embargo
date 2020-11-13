@@ -29,17 +29,14 @@ Original embargo request and supplementary materials are attached.
 
 
 
+University Librarian     Initials      Date of decision
 
+[ ] support
+[ ] do not support
 
-
-
-University Librarian Initials Date of decision
-☐ support
-☐ do not support
 Comments:
 
-(for patent-related requests] Director | Initials Date of decision
-
+(for patent-related requests] Director      Initials      Date of decision
 for Innovation, Patents & Licensing
 
 
@@ -52,13 +49,14 @@ for Innovation, Patents & Licensing
 
 
 
-☐ support
-☐ do not support
+[ ] support
+[ ] do not support
+
 Comments:
 
 
 
-Division Chair Initials Date of decision
+Division Chair       Initials       Date of decision
 
 
 
@@ -69,64 +67,42 @@ Division Chair Initials Date of decision
 
 
 
-
-☐ support
-☐ do not support
+[ ] support
+[ ] do not support
 
 
 Comments:
 
 
 
-Dean of Graduate Studies
-
-
-
-Initials
-
-
-
-Date of decision
+Dean of Graduate Studies       Initials       Date of decision
 
 
 
 
 
-☐ support
-☐ do not support
+
+
+[ ] support
+[ ] do not support
 Comments:
 
 
 
 
 
-Vice Provost
+Vice Provost       Initials       Date of decision
 
 
 
-Initials
-
-
-
-Date of decision
-
-
-
-☐ support
-☐ do not support
+[ ] support
+[ ] do not support
 Comments:
 
 
 
-Decision Recorded by Library
 
-
-
-Initials
-
-
-
-Date Added to Spreadsheet
+Decision Recorded by Library       Initials       Date Added to Spreadsheet
 
 
 
