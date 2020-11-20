@@ -10,18 +10,40 @@ class Parser(object):
     #constructor: takes in file name to parse through it    
     def __init__(self, source): 
         self.fields = [              #dictionary for info parsed from  text file
-            ['advisor'],
-            ['submitted': 'y/n'],
-            ['request type'],
-            ['link_to_thesis'],
-            ['division'],
-            ['graduation_date': 'dd/mm/yyyy'],
-
-            ['signature'],
+            ['university_librarian'],
+            ['initials'],
             ['date_of_decision': 'dd/mm/yyyy'],
             ['approval_status': 'y/n'],
-            ['name'],
-            ['comment']
+            ['comments'],
+
+            ['director_for_innovation'],
+            ['initials'],
+            ['date_of_decision': 'dd/mm/yyyy'],
+            ['approval_status': 'y/n'],
+            ['comments'],
+            
+            ['division_chair'],
+            ['initials'],
+            ['date_of_decision': 'dd/mm/yyyy'],
+            ['approval_status': 'y/n'],
+            ['comments'],
+
+            ['dean_of_graduate_studies'],
+            ['initials'],
+            ['date_of_decision': 'dd/mm/yyyy'],
+            ['approval_status': 'y/n'],
+            ['comments'],
+
+            ['vice_provost'],
+            ['initials'],
+            ['date_of_decision': 'dd/mm/yyyy'],
+            ['approval_status': 'y/n'],
+            ['comments'],
+
+
+            ['approval_status': 'y/n'],
+            ['initials'],
+            ['date_added_to_spreadsheet': 'dd/mm/yyyy'],
         ]
         self.parse(source)
 
