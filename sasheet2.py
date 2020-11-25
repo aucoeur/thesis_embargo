@@ -40,10 +40,9 @@ class Parser(object):
             ['approval_status': 'y/n'],
             ['comments'],
 
-
             ['approval_status': 'y/n'],
             ['initials'],
-            ['date_added_to_spreadsheet': 'dd/mm/yyyy'],
+            ['date_added_to_spreadsheet': 'dd/mm/yyyy']
         ]
         self.parse(source)
 
@@ -63,34 +62,122 @@ class Parser(object):
             #loops through every line in the text file
             for line in text:
                 line = line.strip()        #strips trailing and beginnign white spaces
-                #signature
-                if line.startswith('signature '):
-                    #for some reason when you copy paste the email directly to text file, 
-                    #Dear <name> moves to the same line as the date and time, the following code removes that
-                    temp = line[13:]
-                    temp = temp.split()
-                    for i in range(len(temp)):
-                        if temp[i] == "Dear":
-                            self.fields[0].append(" ".join(temp[:i-1]))
-                            break
+                # #signature
+                # if line.startswith('signature '):
+                #     #for some reason when you copy paste the email directly to text file, 
+                #     #Dear <name> moves to the same line as the date and time, the following code removes that
+                #     temp = line[13:]
+                #     temp = temp.split()
+                #     for i in range(len(temp)):
+                #         if temp[i] == "Dear":
+                #             self.fields[0].append(" ".join(temp[:i-1]))
+                #             break
 
-                #for date of decision
-                if line.startswith(['date_of_decision': 'dd/mm/yyyy'],):
-                    start =  True       #the first field we fill in should be the embargo reason
+                #for name of university librarian
+                if line.startswith('university_librarian'):
+                    start =  True
                     currField = 1
                     self.removeTitle(line, currField)
                 if start == True:
-                    #for decision
-                    if line.startswith('submitted': 'y/n'):
+                    #for initials
+                    if line.startswith('initials'):
                         currField = 2
                         self.removeTitle(line, currField)
-                    #for name
-                    elif line.startswith('name'):
+                    #for date of decision
+                    elif line.startswith(['date_of_decision': 'dd/mm/yyyy']):
                         currField = 3
+                        self.removeTitle(line, currField)
+                    #for approval status
+                    elif line.startswith('approval_status': 'y/n'):
+                        currField = 4
                         self.removeTitle(line, currField)
                     #for comment
                     elif line.startswith('comment'):
-                        currField = 4
+                        currField = 5
+                        self.removeTitle(line, currField)
+
+                #for name of director of innovation
+                if line.startswith('director_for_innovation'):
+                    start =  True
+                    currField = 6
+                    self.removeTitle(line, currField)
+                if start == True:
+                    #for initials
+                    if line.startswith('initials'):
+                        currField = 7
+                        self.removeTitle(line, currField)
+                    #for date of decision
+                    elif line.startswith(['date_of_decision': 'dd/mm/yyyy']):
+                        currField = 8
+                        self.removeTitle(line, currField)
+                    #for approval status
+                    elif line.startswith('approval_status': 'y/n'):
+                        currField = 9
+                        self.removeTitle(line, currField)
+                    #for comment
+                    elif line.startswith('comment'):
+                        currField = 10
+                        self.removeTitle(line, currField)
+
+                #for name of division chair
+                if line.startswith('division_chair'):
+                    start =  True
+                    currField = 11
+                    self.removeTitle(line, currField)
+                if start == True:
+                    #for initials
+                    if line.startswith('initials'):
+                        currField = 12
+                        self.removeTitle(line, currField)
+                    #for date of decision
+                    elif line.startswith(['date_of_decision': 'dd/mm/yyyy']):
+                        currField = 13
+                        self.removeTitle(line, currField)
+                    #for approval status
+                    elif line.startswith('approval_status': 'y/n'):
+                        currField = 14
+                        self.removeTitle(line, currField)
+                    #for comment
+                    elif line.startswith('comment'):
+                        currField = 15
+                        self.removeTitle(line, currField)
+                
+                #for name of dean of graduate studies
+                if line.startswith('dean_of_graduate_studies'):
+                    start =  True
+                    currField = 16
+                    self.removeTitle(line, currField)
+                if start == True:
+                    #for initials
+                    if line.startswith('initials'):
+                        currField = 17
+                        self.removeTitle(line, currField)
+                    #for date of decision
+                    elif line.startswith(['date_of_decision': 'dd/mm/yyyy']):
+                        currField = 18
+                        self.removeTitle(line, currField)
+                    #for approval status
+                    elif line.startswith('approval_status': 'y/n'):
+                        currField = 19
+                        self.removeTitle(line, currField)
+                    #for comment
+                    elif line.startswith('comment'):
+                        currField = 20
+                        self.removeTitle(line, currField)
+
+                #for name of provost
+                if line.startswith('vice_provost'):
+                    start =  True
+                    currField = 21
+                    self.removeTitle(line, currField)
+                if start == True:
+                    #for initials
+                    if line.startswith('initials'):
+                        currField = 22
+                        self.removeTitle(line, currField)
+                    #for date of decision
+                    elif line.startswith(['date_of_decision': 'dd/mm/yyyy']):
+                        currField = 23
                         self.removeTitle(line, currField)
 
     #converts the field's dic to JSON
