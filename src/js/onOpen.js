@@ -1,6 +1,6 @@
 const onOpen = () => {
   SpreadsheetApp.getUi()
-    .createMenu('📥 AutoMagical')
+    .createMenu('📥 Thesis Embargo')
     .addItem('Show Sidebar', 'showSidebar')
     .addSeparator()
     .addItem('Credits', 'showCredits')

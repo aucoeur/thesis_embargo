@@ -87,11 +87,11 @@ module.exports = {
           from: getSrcPath('../appsscript.json'),
           to: destination,
         },
-        // {
-        //   from: getSrcPath('../functions/*.js'),
-        //   to: destination,
-        //   flatten: true,
-        // },
+        {
+          from: getSrcPath('src/js/*.js'),
+          to: destination,
+          flatten: true,
+        },
       ],
     }),
     new GasPlugin(),
