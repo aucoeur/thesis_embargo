@@ -78,20 +78,20 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        {
-          from: getSrcPath('**/*.html'),
-          flatten: true,
-          to: destination,
-        },
+        // {
+        //   from: getSrcPath('**/*.html'),
+        //   flatten: true,
+        //   to: destination,
+        // },
         {
           from: getSrcPath('../appsscript.json'),
           to: destination,
         },
-        {
-          from: getSrcPath('../functions/*.js'),
-          to: destination,
-          flatten: true,
-        },
+        // {
+        //   from: getSrcPath('../functions/*.js'),
+        //   to: destination,
+        //   flatten: true,
+        // },
       ],
     }),
     new GasPlugin(),
