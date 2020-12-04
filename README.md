@@ -10,6 +10,7 @@ Utility to integrate and semi-automate workflow process for Caltech Library Thes
     npx clasp login
     ```
     - Turn on Google Apps Script API at https://script.google.com/home/usersettings
+
 1. Create a new Google Script bound to a Google Sheet (or set the type as standalone to create a standalone script in your Google Drive)
 
     ```
@@ -22,6 +23,7 @@ Utility to integrate and semi-automate workflow process for Caltech Library Thes
     > The `build` directory contains the bundled code that is pushed to Google Apps Script.
 
     - Development mode: `npm run deploy`
+        > On first run, review and approve permissions in Script Editor
     - Production mode:  `npm run deploy:prod`
 
     ### Development vs Production mode
@@ -37,6 +39,7 @@ Utility to integrate and semi-automate workflow process for Caltech Library Thes
 
 ## Credits
  - Apps Script Starter Kit - [@labnol](https://github.com/labnol/apps-script-starter)
+ - Materialize CSS - https://materializecss.com/
 
 ## Contributors
 Aucoeur Ngo - [@aucoeur](https://github.com/aucoeur)   

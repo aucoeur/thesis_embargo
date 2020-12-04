@@ -1,5 +1,5 @@
-function myFunction() {
-  Logger.log('Hi from VSCode');
-}
+import onOpen from './onOpen';
+import showSidebar from './showSidebar';
 
-global.myFunction = myFunction;
+global.onOpen = onOpen;
+global.showSidebar = showSidebar;
