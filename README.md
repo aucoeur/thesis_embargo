@@ -36,6 +36,14 @@ Utility to integrate and semi-automate workflow process for Caltech Library Thes
 
     The default `.claspignore` file in the Apps Script Starter kit will push all the JS and HTML inside the `rootDir` folder and ignore all the other files.
 
+### Optional
+- Install a Trigger to open Sidebar on Open:
+    1. In the Script Editor menu > Edit > Current project's triggers 
+    1. + Add Trigger
+        - Choose which function to run: `showSidebar`
+        - Select event source: `From spreadsheet`
+        - Select event type: `On open`
+    1. Save
 
 ## Credits
  - Apps Script Starter Kit - [@labnol](https://github.com/labnol/apps-script-starter)
