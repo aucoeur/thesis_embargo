@@ -88,7 +88,7 @@ module.exports = {
           to: destination,
         },
         {
-          from: getSrcPath('src/js/*.js'),
+          from: getSrcPath('**/*.js'),
           to: destination,
           flatten: true,
         },
