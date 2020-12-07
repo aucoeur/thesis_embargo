@@ -16,10 +16,10 @@
         <div class="container">
             <ul class="tabs tabs-fixed-width">
                 <li class="tab col s3">
-                    <a class="active" href="#requests">Requests</a>
+                    <a class="" href="#requests">Requests</a>
                 </li>
                 <li class="tab col s3">
-                    <a href="#decisions">Decisions</a>
+                    <a class="active" href="#decisions">Decisions</a>
                 </li>
             </ul>
         </div>
@@ -72,9 +72,35 @@
                         <div class="row">
                             <div class="col s12">
                                 <form id="approvalForm">
+                                    <? let comm = populateCommitee(); ?>
+                                    <? for (let i=0; i<comm.length; i += 1) { ?>
+                                        <div class="section switch">
+                                            <h6><?= comm[i] ?></h6>
+                                            <label>
+                                            Off
+                                            <input type="checkbox" value=<?= comm[i] ?> checked>
+                                            <span class="lever"></span>
+                                            Send
+                                            </label>
+                                        </div>
+                                    <? } ?>
+
                                     <div class="section">
-                                        <button class="btn waves-effect waves-light" type="submit" name="action">Generate PDF</button>
+                                        <!-- Apps Script Templated HTML/Scriplets Syntax - https://developers.google.com/apps-script/guides/html/templates#scriptlets -->
+                                        <? let divChairs = populateDivChairs(); ?>
+                                        <div class="input-field col s12">
+                                            <select id="division" multiple>
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <? for (let i=0; i<divChairs.length; i += 1) { ?>
+                                                    <option value=<?= divChairs[i] ?>><?= divChairs[i] ?></option>
+                                                    <? } ?>
+                                            </select>
+                                            <label>Select Division Chairs</label>
+                                        </div>
                                     </div>
+
+                                    <button class="btn waves-effect waves-light" type="submit"
+                                        name="action">Generate PDF</button>
                                 </form>
                             </div>
                         </div>
@@ -87,12 +113,19 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <script>
-        // Init materialize tabs
-        let tabs = document.querySelectorAll('.tabs')
-        for (let i = 0; i < tabs.length; i += 1) {
-            M.Tabs.init(tabs[i]);
-        };
+        document.addEventListener('DOMContentLoaded', function () {
+            // Init materialize tabs
+            let tabs = document.querySelectorAll('.tabs')
+            for (let i = 0; i < tabs.length; i += 1) {
+                M.Tabs.init(tabs[i]);
+            };
+
+            // Populate division chair select field
+            const elems = document.querySelectorAll('#division');
+            let instances = M.FormSelect.init(elems);
+        });
     </script>
     <script>
         // Parse and submit embargo request data
@@ -102,13 +135,12 @@
 
             const button = document.querySelector('button');
             button.classList.add("disabled")
-            // alert(`Entered: ${JSON.stringify(data)}`)
 
             google.script.run.withSuccessHandler(function (text) {
                 M.toast({
                     html: text
-                });
-                button.classList.remove("disabled")
+                }); // MaterializeCSS popup alert
+                button.classList.remove("disabled");
             }).parseData(data);
         });
     </script>
