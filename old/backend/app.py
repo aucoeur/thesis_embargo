@@ -69,10 +69,5 @@ def parsed():
             decision.update_cell(row, 4, parsedDict[field])
 
 
-
-
-
-
-
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))

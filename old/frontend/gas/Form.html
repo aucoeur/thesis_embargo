@@ -1,0 +1,27 @@
+<form id="theForm">
+  <div class="form-group">
+    <label for="requestor_name">Requestor Name</label>
+    <input class="form-control form-control-sm" type="text" class="form-control" id="requestor_name" name="requestor_name" placeholder="Requestor Name">
+  </div>
+  <div class="form-group">
+    <label for="thesis_title">Thesis Title</label>
+    <input class="form-control form-control-sm" type="text" class="form-control" id="thesis_title" name="thesis_title" placeholder="Thesis Title">
+  </div>
+  <div class="form-group">
+    <label for="request_type">Request Type</label>
+    <select class="form-control form-control-sm" id="request_type" name="request_type" required>
+      <option value="" selected>Choose...</option>
+      <option value="6-month embargo">6-month embargo</option>
+      <option value="6-month extension">6-month extension</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input class="form-control form-control-sm" type="email" class="form-control" id="email" name="email">
+  </div>
+  <div class="form-group">
+  <label for="parse">Parse</label>
+  <textarea id="parse" name="parse">  </textarea>
+  </div>
+  <input type="button" class="btn btn-primary" onClick="google.script.run.processForm(this.parentNode);" value="Submit" />
+</form>

@@ -1,0 +1,59 @@
+{
+  "name": "caltechlib-thesis-embargo",
+  "version": "1.2.0",
+  "description": "Caltech Library utility for processing thesis embargo requests",
+  "contributors": [
+    "Aucoeur Ngo (https://github.com/aucoeur)",
+    "Audi Blades (https://github.com/ablades)",
+    "George Aoyagi (https://github.com/gaoyagi)",
+    "Jeric Hunter (https://github.com/JericHunter)",
+    "Padyn Riddell(https://github.com/squeaky1273)"
+  ],
+  "homepage": "https://libguides.caltech.edu/theses/dissemination-policy",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "upload": "clasp push",
+    "deploy": "npm run build && npm run upload",
+    "deploy:prod": "cross-env NODE_ENV=production npm run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aucoeur/thesis_embargo.git"
+  },
+  "keywords": [
+    "google-apps-script",
+    "google-workspace"
+  ],
+  "dependencies": {
+    "crypto-js": "3.1.9-1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "@google/clasp": "^2.3.0",
+    "@types/google-apps-script": "^1.0.20",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.3.2",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-googleappsscript": "^1.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "gas-webpack-plugin": "^1.2.2",
+    "prettier": "^2.2.1",
+    "terser-webpack-plugin": "^5.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.2.0"
+  }
+}
