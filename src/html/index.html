@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Caltech Library Thesis Embargo</title>
+</head>
+
+<body>
+    <div class="section">
+
+        <!-- Tabs -->
+        <div class="container">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab col s3">
+                    <a class="" href="#requests">Requests</a>
+                </li>
+                <li class="tab col s3">
+                    <a class="active" href="#decisions">Decisions</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Requests content -->
+        <div id="requests" class="col s12">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Add Request to Sheet</h4>
+                        <!-- parse request form -->
+                        <div class="row">
+                            <div class="col s12">
+                                <form id="parseForm">
+                                    <div class="section">
+                                        <button class="btn waves-effect waves-light" type="submit"
+                                            name="action">Parse</button>
+                                    </div>
+
+                                    <div class="section switch">
+                                        <h6>
+                                            <i class="chevron_right"></i> Requesting Abstract Embargo?
+                                        </h6>
+
+                                        <label for='abstract'>
+                                            No
+                                            <input type="checkbox" id="abstract">
+                                            <span class="lever"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="section">
+                                        <div class="input-field">
+                                            <textarea id="parseField" class="materialize-textarea"></textarea>
+                                            <label for="parseField">Paste data to parse</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decisions content -->
+        <div id="decisions" class="col s12">
+            <div class="container">
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Generate Approval Form</h4>
+                        <!-- approval form -->
+                        <div class="row">
+                            <div class="col s12">
+                                <form id="approvalForm">
+                                    <!-- Apps Script Templated HTML/Scriplets Syntax - https://developers.google.com/apps-script/guides/html/templates#scriptlets -->
+                                    <? let comm = populateCommitee(); ?>
+                                    <? for (let i=0; i<comm.length; i += 1) { ?>
+                                        <div class="input-field">
+                                            <div class="section switch">
+                                                <h6><?= comm[i] ?></h6>
+                                                <label for=<?= comm[i] ?>>
+                                                Off
+
+                                                <input type="checkbox"
+                                                    value=<?= comm[i] ?>
+                                                    name=<?= comm[i] ?>
+                                                    id=<?= comm[i] ?>
+                                                    checked>
+                                                <span class="lever"></span>
+                                                Send
+                                                </label>
+                                            </div>
+                                        </div>
+                                    <? } ?>
+
+                                    <div class="section">
+                                        <? let divChairs = populateDivChairs(); ?>
+                                        <div class="input-field col s12">
+                                            <select id="division" multiple>
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <? for (let i=0; i<divChairs.length; i += 1) { ?>
+                                                    <option
+                                                        value=<?= divChairs[i] ?>
+                                                        name=<?= divChairs[i] ?>>
+                                                        <?= divChairs[i] ?>
+                                                    </option>
+                                                    <? } ?>
+                                            </select>
+                                            <label>Select Division Chairs</label>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn waves-effect waves-light" type="submit"
+                                        name="action">Generate PDF</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Init materialize tabs
+            let tabs = document.querySelectorAll('.tabs')
+            for (let i = 0; i < tabs.length; i += 1) {
+                M.Tabs.init(tabs[i]);
+            };
+
+            // Populate division chair select field
+            const selectOptions = document.querySelectorAll('#division');
+            M.FormSelect.init(selectOptions);
+        });
+    </script>
+    <script>
+        // Parse and submit embargo request data
+        document.getElementById('parseForm').addEventListener('submit', function onSubmit(e) {
+            e.preventDefault(); // prevents page reloading
+            let data = document.getElementById('parseField').value
+
+            const button = document.querySelector('button');
+            button.classList.add("disabled")
+
+            google.script.run.withSuccessHandler(function (text) {
+                M.toast({
+                    html: text
+                }); // MaterializeCSS popup alert
+                button.classList.remove("disabled");
+            }).parseData(data);
+        });
+    </script>
+    <script>
+        // Generate exception approval form
+        document.getElementById('approvalForm').addEventListener('submit', function onSubmit(e) {
+            e.preventDefault(); // prevents page reloading
+            let data = new FormData(e.target);
+            // alert(data);
+            // loops through object and converts to JSON
+            let toJSON = JSON.stringify(Object.fromEntries(data));
+
+            alert(toJSON);
+            // const button = document.querySelector('button');
+            // button.classList.add("disabled")
+
+            // google.script.run.withSuccessHandler(function (text) {
+            //     M.toast({
+            //         html: text
+            //     }); // MaterializeCSS popup alert
+            //     button.classList.remove("disabled");
+            // }).createPDF(toJSON);
+        });
+    </script>
+</body>
+
+</html>
