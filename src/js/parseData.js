@@ -1,23 +1,8 @@
-const testString = `Submitted values are:
-Reason for Requesting Exception: Chapter 2 contains unpublished theory work which is intended for publication in APS
-Physical Review B. This also has not been drafted as a paper yet because I have been writing my thesis. This work is
-theory, which builds on existing numerical work performed by one of our competitors. As such, there is a high risk of getting
-scooped if our work is circulated before we submit.
-Requestor Name: Jocelyn Yamasaki
-Requestor Email: jocelyny@library.caltech.edu
-Thesis Author: Jocelyn Yamasaki
-Thesis Title: SAMPLE - Modeling and Development of Superconducting Nanowire Single-Photon Detectors
-Graduation Year: 2020
-Advisor Name: Keith Schwab
-Advisor Email: schwab@caltech.edu
-Division: Engineering and Applied Science (EAS)
-Exception Type: Extend Embargo for an Additional 6 Months
-Request: Consistent with the Caltech Doctoral Thesis Dissemination policy, I am requesting an exception to the 6-month
-embargo to campus for my PhD thesis.`;
-
 const parseData = (text) => {
   const sheet = SpreadsheetApp.getActive().getActiveSheet();
   // console.log(typeof text, text);
+
+  // clean up text formatting since copy/pasting strings might have newline variations
   const cleanText = text.replace(/[\r\n]+/gm, '');
   const dataRow = [new Date()];
 
@@ -43,12 +28,16 @@ const parseData = (text) => {
     dataRow.push(result);
   }
 
+  // Janky way to add the last line (checkbox, same for all requests)
+  dataRow.push(
+    'Consistent with the Caltech Doctoral Thesis Dissemination policy, I am requesting an exception to the 6-month embargo to campus for my PhD thesis.'
+  );
   // console.log(typeof dataRow);
   // console.log(dataRow);
 
   sheet.appendRow(dataRow);
   Logger.log(dataRow);
-  return `Entry ${dataRow[5]} parsed and added to sheet`;
+  return `Request for ${dataRow[4]} parsed and added to sheet`;
 };
 
 // parseData(testString);
