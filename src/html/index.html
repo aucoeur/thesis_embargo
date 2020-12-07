@@ -13,6 +13,8 @@
 
 <body>
     <div class="section">
+
+        <!-- Tabs -->
         <div class="container">
             <ul class="tabs tabs-fixed-width">
                 <li class="tab col s3">
@@ -24,12 +26,13 @@
             </ul>
         </div>
 
+        <!-- Requests content -->
         <div id="requests" class="col s12">
             <div class="container">
                 <div class="card">
                     <div class="card-content">
                         <h4>Add Request to Sheet</h4>
-
+                        <!-- parse request form -->
                         <div class="row">
                             <div class="col s12">
                                 <form id="parseForm">
@@ -63,15 +66,18 @@
                 </div>
             </div>
         </div>
+
+        <!-- Decisions content -->
         <div id="decisions" class="col s12">
             <div class="container">
                 <div class="card">
                     <div class="card-content">
                         <h4>Generate Approval Form</h4>
-
+                        <!-- approval form -->
                         <div class="row">
                             <div class="col s12">
                                 <form id="approvalForm">
+                                    <!-- Apps Script Templated HTML/Scriplets Syntax - https://developers.google.com/apps-script/guides/html/templates#scriptlets -->
                                     <? let comm = populateCommitee(); ?>
                                     <? for (let i=0; i<comm.length; i += 1) { ?>
                                         <div class="section switch">
@@ -86,7 +92,6 @@
                                     <? } ?>
 
                                     <div class="section">
-                                        <!-- Apps Script Templated HTML/Scriplets Syntax - https://developers.google.com/apps-script/guides/html/templates#scriptlets -->
                                         <? let divChairs = populateDivChairs(); ?>
                                         <div class="input-field col s12">
                                             <select id="division" multiple>
@@ -123,8 +128,8 @@
             };
 
             // Populate division chair select field
-            const elems = document.querySelectorAll('#division');
-            let instances = M.FormSelect.init(elems);
+            const selectOptions = document.querySelectorAll('#division');
+            M.FormSelect.init(selectOptions);
         });
     </script>
     <script>

@@ -4,26 +4,26 @@ Utility to integrate and semi-automate workflow process for Caltech Library Thes
 ## How to Use
 1. Clone repo, then install dependencies: `npm install`
 
-1. Log in to Google clasp and authorize using your Google account.
+2. Login w/ clasp and authorize using your Google account via Terminal.
     > Note: Conflicts may occur if logged into Google and/or Chrome with multiple accounts
    ```
     npx clasp login
     ```
     - Turn on Google Apps Script API at https://script.google.com/home/usersettings
 
-1. Create a new Google Script bound to a Google Sheet (or set the type as standalone to create a standalone script in your Google Drive)
+3. Create a new Google Script bound to a Google Sheet (or set the type as standalone to create a standalone script in your Google Drive)
 
     ```
     npx clasp create --type sheets --title "Caltech Library Thesis Embargo" --rootDir ./build
     ```
 
-1. Include the necessary [OAuth Scopes](https://developers.google.com/oauthplayground/) in the [appsscript.json](./appsscript.json) file
+4. Include the necessary [OAuth Scopes](https://developers.google.com/oauthplayground/) in the [appsscript.json](./appsscript.json) file
 
-1. Deploy the project     
+5. Deploy the project     
     > The `build` directory contains the bundled code that is pushed to Google Apps Script.
 
     - Development mode: `npm run deploy`
-        > On first run, review and approve permissions in Script Editor
+        > On first run, review and approve permissions in Script Editor.  Because this is a private tool, there may be a warning that the app isn't verified. Show Advanced > Go 
     - Production mode:  `npm run deploy:prod`
 
     ### Development vs Production mode

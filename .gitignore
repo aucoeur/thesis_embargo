@@ -3,3 +3,4 @@ build/
 .vscode
 .clasp.json
 sample.txt
+src/config.js

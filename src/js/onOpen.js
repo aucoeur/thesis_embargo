@@ -4,8 +4,7 @@ const onOpen = () => {
   SpreadsheetApp.getUi()
     .createMenu('📥 Thesis Embargo')
     .addItem('Show Sidebar', 'showSidebar')
-    .addSeparator()
-    .addItem('Credits', 'showCredits')
+    // .addSeparator()
     .addToUi();
   showSidebar();
 };
