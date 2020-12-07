@@ -1,0 +1,46 @@
+@import '../../global.scss';
+
+$size: 50%;
+
+
+textarea {
+    width: $size;
+}
+
+input[type=button] {
+    padding: $gap;
+    font-size: $font-size;
+    color: $color-light;
+    background-color: $color-accent;
+    border: $border solid $color-accent;
+    border-radius: 1rem;
+
+    &:hover {
+        background-color: $color-accent-bright;
+        border: $border solid $color-accent-bright;
+    }
+}
+
+.header {
+    font-weight: 400;
+}
+
+div {
+    padding: $padding;
+}
+
+.parsed {
+    display: flex;
+    flex-direction: row;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}

@@ -17,7 +17,7 @@ Utility to integrate and semi-automate workflow process for Caltech Library Thes
     npx clasp create --type sheets --title "Caltech Library Thesis Embargo" --rootDir ./build
     ```
 
-4. Include the necessary [OAuth Scopes](https://developers.google.com/oauthplayground/) in the [appsscript.json](./appsscript.json) file
+4. Rename [src/SAMPLEconfig.js](src/SAMPLEconfig.js) to `config.js` and add own doc & folder IDs.  Review the [OAuth Scopes](https://developers.google.com/oauthplayground/) in the [appsscript.json](./appsscript.json) file
 
 5. Deploy the project     
     > The `build` directory contains the bundled code that is pushed to Google Apps Script.
