@@ -28,7 +28,7 @@ const parseData = (text) => {
     dataRow.push(result);
   }
 
-  // Janky way to add the last line (checkbox, same for all requests)
+  // FIX THIS: Janky way to add the last line (checkbox, same for all requests)
   dataRow.push(
     'Consistent with the Caltech Doctoral Thesis Dissemination policy, I am requesting an exception to the 6-month embargo to campus for my PhD thesis.'
   );
@@ -36,7 +36,7 @@ const parseData = (text) => {
   // console.log(dataRow);
 
   sheet.appendRow(dataRow);
-  Logger.log(dataRow);
+  // Logger.log(dataRow);
   return `Request for ${dataRow[4]} parsed and added to sheet`;
 };
 
